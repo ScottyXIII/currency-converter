@@ -19,9 +19,9 @@ class CurrencyConverter {
 	public function __construct() 
 	{
 		$this->guzzleHttp = new \GuzzleHttp\Client([
-            'headers' => ['User-Agent' => 'testing/1.0'],
-            'verify' => false
-        ]);
+			'headers' => ['User-Agent' => 'testing/1.0'],
+			'verify' => false
+		]);
 	}
 
 	public function setCurrencyToConvert($currency) 
