@@ -40,7 +40,7 @@ class CurrencyConverter {
 		$response = $this->guzzleHttp->request('GET', self::BASE_API_URL .  '/' . $this->currencyFrom);
 
 	 	$this->exchangeRate = $response->getBody(true);
-		$this->exchangeRate = json_decode($this->exchangeRate)->rates->GBP;
+		$this->exchangeRate = json_decode($this->exchangeRate)->rates->$currencyTo;
 
 		return $this->exchangeRate;
 	}
