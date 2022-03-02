@@ -24,23 +24,23 @@ class CurrencyConverter {
 		]);
 	}
 
-	public function setCurrencyToConvert($currency) 
+	public function setCurrencyToConvert(string $currency): void
 	{
 		$this->currencyFrom = $currency;
 	}
 
 
-	public function setConvertedCurrency($currency) 
+	public function setConvertedCurrency(string $currency): void
 	{
 		$this->currencyTo = $currency;
 	}
 
-	public function getExchangeRate()
+	public function getExchangeRate(): string
 	{
 		$response = $this->guzzleHttp->request('GET', self::BASE_API_URL .  '/' . $this->currencyFrom);
 
 	 	$this->exchangeRate = $response->getBody(true);
-		$this->exchangeRate = json_decode($this->exchangeRate)->rates->$currencyTo;
+		$this->exchangeRate = json_decode($this->exchangeRate)->rates->$currencyTo ?: '';
 
 		return $this->exchangeRate;
 	}
